@@ -1,14 +1,33 @@
-Docker uses containers to make easier processes like deploying, runing and etc. Containers allow  to ship your project as one package with all its dependencies! Docker runs containers. It allows easily spin up container. Container is a process isolated in something called namespace. Container isolates process from outer processses. Briefly container is a sandbox which contains one or more processes and gives them namespaces and some cgroups. Image starts from scratch and creates layers each layer consists some service or OS. Order of layers is important. To change child paren should be changed as well. In docker we can create namespaces (containers). We do not have to install anything on host OS because everything will be contained in a container. Image contains all the information! It's like a snapchot that will be instantiated as a container. Containers are created based on images. Dockerfile has instructions to create an image, instructions that should be run for an image to be created! The machine, a docker is installed on, is named as docker host. Because it's hosting a docker server. And this machine is actually capable to run containers and build images. Docker host is a house of all containers. You will also have a docker client on your machine. Use client (CLI) to send API requests to the daemon. Daemon uses the same API to reply. By typing commands you make API calls to the server.
-Image is a template where you define all of the binaries all of the libraries that your app needs. After creating an image you cannot modify any layer in that image! Instead you can create another image starting from a layer you want. Layer is read-only. Container is a runtime of an image. Image is like blueprint of all containers. When you create a container you put read and write layer on top of your image and you are able to access data from the image temporarily. When you delete container everything is gone but your image is left. Docker has some requirements for OS to be installed. Docker creates a group of users that can connect to docker daemon.
-When "permission denied" error occurs create docker group then add user to that group. sudo systemctl enable docker.
+Docker uses containers to make easier processes like deploying, running and etc.
+Containers allow  to ship your project as one package with all its dependencies!
+
+Docker runs containers. It allows easily spin up container. Container is a process isolated in something called namespace.
+Container isolates process from outer processes.
+
+Briefly container is a sandbox which contains one or more processes and gives them namespaces and some c-groups.
+Image starts from scratch and creates layers, each layer consists some service or OS. Order of layers is important.
+To change child parent should be changed as well. In docker we can create namespaces (containers).
+
+We do not have to install anything on host OS because everything will be contained in a container. Image contains all the information!
+It's like a snapshot that will be instantiated as a container. Containers are created based on images. Dockerfile has instructions to create an image,
+instructions that should be run for an image to be created!
+
+The machine, a docker is installed on, is named as docker host. Because it's hosting a docker server. And this machine is actually capable to run
+containers and build images. Docker host is a house of all containers. You will also have a docker client on your machine. Use client (CLI) to send
+API requests to the daemon. Daemon uses the same API to reply. By typing commands you make API calls to the server.
+
+Image is a template where you define all of the binaries all of the libraries that your app needs. After creating an image you cannot modify any layer
+in that image! Instead you can create another image starting from a layer you want. Layer is read-only. Container is a runtime of an image.
+Image is like blueprint of all containers. When you create a container you put read and write layer on top of your image and you are able to access data
+from the image temporarily. When you delete container everything is gone but your image is left. Docker has some requirements for OS to be installed.
+Docker creates a group of users that can connect to docker daemon. When "permission denied" error occurs create docker group then add user to that group.
+sudo systemctl enable docker.
 
 Image contains everything your application needs.
 
 Docker hub is a cloud of images. Most open source projects have their own official and built images in Docker hub.
-"docker pull image_name:version" is used to download images. Use "docker images" command to see all images. "docker rmi image_name:tag" command is
-used to remove image, it's possible to use name, tag or image id. "docker rm container_name_or_id" removes container.
-"docker run image:tag" runs container. --name option indicates name of a container, -d flag indicates that a container runs in background.
--f means force. "docker ps" allows to see containers that are running. -f is used if container is running and you want to stop it.
+Use "docker images" command to see all images. "docker rm container_name_or_id" removes container.
+-f means force.  -f is used if container is running and you want to stop it.
 To test container you may use -p flag that indicates ports. "docker build" command allows to create an image from dockerfile, point at the end means
 there's a dockerfile in current directory.
 
@@ -16,8 +35,16 @@ It's possible to start from any official image or any custom image.
 
 RUN instruction lets you do anything you want!
 COPY copies files/directories from docker host to resulted image etc. container
+
 $ docker ps --no-trunc
 $ docker exec -ti (terminal interactive) <container_name> <terminal> - use to enter container
 $ exit - exit from container
+$ docker run image:tag - runs container
+    --name option indicates name of a container
+    -d flag indicates that a container runs in background
+$ docker ps - allows to see containers that are running
+$ docker pull image_name:version - is used to download images.
+$ docker rmi image_name:tag - command is used to remove image, it's possible to use name, tag or image id.
+$ docker logs container_name - see all logs
 
 Container is the tiny thing that has an operating system running on it.
