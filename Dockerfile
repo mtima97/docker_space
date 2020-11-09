@@ -1,12 +1,14 @@
 FROM centos
 
+ARG user
+
 RUN yum -y install httpd
 
 WORKDIR /var/www/html/
 
-RUN useradd timur && chown timur:timur /var/www/html -R
+RUN useradd $user && chown $user:$user /var/www/html/ -R
 
-USER timur
+USER $user
 
 COPY index.html .
 
