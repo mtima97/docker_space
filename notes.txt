@@ -51,4 +51,5 @@ Container is the tiny thing that has an operating system running on it.
 
 CMD instruction allows container to be alive.
 
-Context is the directory with all needed files. There's a file .dockerignore that stores directories which you don't want to add to a context.
+Context is the directory with all needed files. There's a file .dockerignore that stores directories which you don't want to add to a context. Add
+files that will be used to a context.
