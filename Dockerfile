@@ -1,6 +1,6 @@
 FROM centos
 
-ARG user
+ARG user=timur
 
 RUN yum -y install httpd
 
@@ -14,4 +14,8 @@ COPY index.html .
 
 USER root
 
-CMD apachectl -DFOREGROUND
+COPY cmd.sh .
+
+RUN chmod +x cmd.sh
+
+CMD ./cmd.sh

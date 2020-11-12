@@ -45,7 +45,7 @@ $ docker run image:tag - runs container
 $ docker ps - allows to see containers that are running
 $ docker pull image_name:version - is used to download images.
 $ docker rmi image_name:tag - command is used to remove image, it's possible to use name, tag or image id.
-$ docker logs container_name - see all logs
+$ docker logs container_name - see all logs, lets you see logs of CMD
 
 Container is the tiny thing that has an operating system running on it.
 
