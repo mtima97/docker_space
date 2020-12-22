@@ -1,5 +1,13 @@
-FROM nginx:alpine
+FROM centos:8
 
-ENV to_nginx /usr/share/nginx/html
+ENV web_root=/var/www/html
 
-COPY index.html $to_nginx
+RUN dnf -y install httpd php php-mysqlnd nano
+
+COPY index.html $web_root
+
+RUN echo "<?php phpinfo();" > $web_root/test.php
+
+RUN echo "ServerName 127.0.0.1:80" >> /etc/httpd/conf/httpd.conf
+
+CMD apachectl -DFOREGROUND
