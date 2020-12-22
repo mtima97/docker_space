@@ -34,7 +34,7 @@ there's a dockerfile in current directory.
 It's possible to start from any official image or any custom image.
 
 RUN instruction lets you do anything you want!
-COPY copies files/directories from docker host to resulted image etc. container
+COPY copies files/directories from context to resulted image etc. container
 
 $ docker ps --no-trunc
 $ docker exec -ti (terminal interactive) <container_name> <terminal> - use to enter container
