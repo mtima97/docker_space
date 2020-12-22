@@ -1,7 +1,22 @@
-FROM nginx:alpine
+FROM centos
 
-LABEL maintainer="Timur Myngbay"
+ARG user=timur
 
-WORKDIR /usr/share/nginx/html/
+RUN yum -y install httpd && \
+    yum install php php-mysql
 
-COPY index.html .
+WORKDIR /var/www/html/
+
+RUN useradd $user && chown $user:$user /var/www/html/ -R
+
+USER $user
+
+COPY index.php .
+
+USER root
+
+COPY cmd.sh .
+
+RUN chmod +x cmd.sh
+
+CMD ./cmd.sh
