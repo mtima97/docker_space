@@ -1,18 +1,12 @@
 FROM centos
 
-ARG user=timur
+LABEL maintainer="Timur Myngbay"
 
-RUN yum -y install httpd
+RUN yum -y install httpd && yum -y install php
 
 WORKDIR /var/www/html/
 
-RUN useradd $user && chown $user:$user /var/www/html/ -R
-
-USER $user
-
 COPY index.html .
-
-USER root
 
 COPY cmd.sh .
 
